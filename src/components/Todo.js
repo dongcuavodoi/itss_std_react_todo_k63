@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 /* 
   【Todoのデータ構成】
@@ -23,13 +23,13 @@ function Todo() {
   const [filter, setFilter] = useState("all")
 
   const handleClick = (item) => {
-    putItems(items.map(element=>{
-      return element.key === item.key ? {...element, done: !element.done} : element
+    putItems(items.map(element => {
+      return element.key === item.key ? { ...element, done: !element.done } : element
     }))
   }
 
   const handleEnterPress = (text) => {
-    putItems([...items, {key: getKey(), text: text, done: false}])
+    putItems([...items, { key: getKey(), text: text, done: false }])
   }
 
   const handleFilter = (filter) => {
@@ -58,13 +58,13 @@ function Todo() {
         <Input onEnterPress={handleEnterPress} />
       </div>
       <div>
-        <Filter filter={filter} handleFilter={handleFilter}/>
+        <Filter filter={filter} handleFilter={handleFilter} />
       </div>
       {items.filter(filterFunc).map(item => (
         <TodoItem key={item.key} item={item} onClick={handleClick} />
       ))}
       <div className="panel-block">
-        {items.length} items
+        {items.filter(filterFunc).length} items
       </div>
       <div className="panel-block">
         <button className="button is-fullwidth is-light" onClick={handleDelete}>
