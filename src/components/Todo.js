@@ -34,10 +34,17 @@ function Todo() {
     console.log(items)
   }
 
+  const handleEnterPress = (text) => {
+    putItems([...items, {key: getKey(), text: text, done: false}])
+  }
+
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
+      </div>
+      <div>
+        <Input onEnterPress={handleEnterPress} />
       </div>
       {items.map(item => (
         <TodoItem key={item.key} item={item} onClick={handleClick} />
