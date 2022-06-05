@@ -27,15 +27,29 @@ function Todo() {
     /* テストコード 終了 */
   ]);
 
+  const [filter, setFilter] = useState("all")
+
   const handleClick = (item) => {
     putItems(items.map(element=>{
       return element.key === item.key ? {...element, done: !element.done} : element
     }))
-    console.log(items)
   }
 
   const handleEnterPress = (text) => {
     putItems([...items, {key: getKey(), text: text, done: false}])
+  }
+
+  const handleFilter = (filter) => {
+    setFilter(filter)
+  }
+
+  const filterFunc = (element) => {
+    if (filter === "all")
+      return element
+    if (filter === "incomplete" && !element.done)
+      return element
+    if (filter === "completed" && element.done)
+      return element
   }
 
   return (
@@ -46,7 +60,10 @@ function Todo() {
       <div>
         <Input onEnterPress={handleEnterPress} />
       </div>
-      {items.map(item => (
+      <div>
+        <Filter filter={filter} handleFilter={handleFilter}/>
+      </div>
+      {items.filter(filterFunc).map(item => (
         <TodoItem key={item.key} item={item} onClick={handleClick} />
       ))}
       <div className="panel-block">
