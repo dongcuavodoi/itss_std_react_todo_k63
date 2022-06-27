@@ -15,6 +15,20 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+export const authorize = firebase.auth();
+
+// Configure FirebaseUI.
+export const uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: 'popup',
+    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+    signInSuccessUrl: '/',
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    ],
+  };
+
 export const getDocs = async () => {
     const ref = await firebase.firestore().collection(path).get()
     return ref.docs.map(doc => {return {...doc.data(), "key": doc.id}});
@@ -23,7 +37,7 @@ export const getDocs = async () => {
 export const clearDocs = async () => {
     const ref = firebase.firestore().collection(path)
     ref.get().then((data)=>{
-        data.docs.map(doc => {
+        data.docs.forEach(doc => {
             ref.doc(doc.id).delete()
         })
     })
