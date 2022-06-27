@@ -15,19 +15,13 @@ function useStorage() {
         })
     }, []);
 
-    useEffect(() => {
-        if (items){
-            if (items.length === 0)
-                clearDocs()
-            else setDocs(items)
-        }
-    }, [items])
-
     const putItems = items => {
+        setDocs(items)
         setItems(items)
     };
 
     const clearItems = () => {
+        clearDocs()
         setItems([])
     };
 
