@@ -13,7 +13,7 @@ import Input from './Input';
 import Filter from './Filter';
 
 /* カスタムフック */
-import useStorage from '../hooks/storage';
+import useStorage from '../hooks/firestore';
 
 /* ライブラリ */
 import { getKey } from "../lib/util";
@@ -52,7 +52,12 @@ function Todo() {
   return (
     <div className="panel">
       <div className="panel-heading">
-        ITSS ToDoアプリ
+        <span className="icon-text">
+          <span className="icon">
+            <i className="fas fa-calendar-check"></i>
+          </span>
+          <span> ITSS Todoアプリ</span>
+        </span>
       </div>
       <div>
         <Input onEnterPress={handleEnterPress} />
