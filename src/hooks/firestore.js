@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getDocs, setDocs, clearDocs } from '../lib/firebase';
 
-const STORAGE_KEY = 'itss-todo';
-
 function useStorage() {
     const [items, setItems] = useState([]);
 
@@ -10,7 +8,6 @@ function useStorage() {
     useEffect(() => {
         const data = getDocs()
         data.then((doc) => {
-            console.log(doc)
             if (!doc) return
             let items = doc
             if (items)
@@ -20,7 +17,7 @@ function useStorage() {
 
     useEffect(() => {
         if (items){
-            if (items.length == 0)
+            if (items.length === 0)
                 clearDocs()
             else setDocs(items)
         }
