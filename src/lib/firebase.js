@@ -6,12 +6,13 @@ import 'firebase/compat/storage'
 const path = "todos"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCde7T1vgzHJCycqiFjtHl9zYgr_yfUkao",
-    authDomain: "todoapp-ea6f5.firebaseapp.com",
-    projectId: "todoapp-ea6f5",
-    storageBucket: "todoapp-ea6f5.appspot.com",
-    messagingSenderId: "562699202604",
-    appId: "1:562699202604:web:1bb9b503122e0904bfe189"
+  apiKey: "AIzaSyDidnFaGVG3wfhBZczITR964OC3-m5Yn-g",
+  authDomain: "itsstodoapp.firebaseapp.com",
+  projectId: "itsstodoapp",
+  storageBucket: "itsstodoapp.appspot.com",
+  messagingSenderId: "577263897045",
+  appId: "1:577263897045:web:1d9ab89d1647ced48e555c",
+  measurementId: "G-RBDGH6FZRY"
 };
 
 firebase.initializeApp(firebaseConfig);
